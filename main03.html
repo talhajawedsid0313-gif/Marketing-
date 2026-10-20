@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Talha's personal portfolio and blog. Explore web design, technology, projects and creative ideas.">
+<meta name="theme-color" content="#080b18">
+<title>Talha | Portfolio & Blog</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg:#080b18;
+  --panel:#11172b;
+  --purple:#9b5cff;
+  --cyan:#35e5ff;
+  --text:#f5f7ff;
+  --muted:#a6aecb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);color:var(--text);
+  overflow-x:hidden;line-height:1.6;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+  radial-gradient(ellipse at 15% 15%,#6525a944,transparent 40%),
+  radial-gradient(ellipse at 85% 45%,#008fa633,transparent 40%),
+  #080b18;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+nav{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 7%;gap:18px;flex-wrap:wrap;
+  background:#080b18cc;backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff12;
+}
+.logo{font-size:22px;font-weight:800}
+.logo span{color:var(--cyan)}
+.navlinks{display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--muted);transition:.3s}
+.navlinks a:hover{color:var(--cyan)}
+.hero{
+  min-height:83vh;padding:90px 8%;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:45px;flex-wrap:wrap;
+}
+.hero-content{max-width:680px;animation:rise 1s both}
+.eyebrow{color:var(--cyan);letter-spacing:3px;font-size:12px;font-weight:700}
+h1{font-size:clamp(42px,7vw,82px);line-height:1.08;margin:20px 0}
+.gradient{
+  background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));
+  background-size:200%;color:transparent;background-clip:text;
+  animation:shine 5s linear infinite;
+}
+.hero p,.muted{color:var(--muted)}
+.hero p{font-size:17px;max-width:570px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-block;padding:13px 23px;border-radius:12px;
+  border:1px solid #ffffff25;transition:.3s;
+}
+.primary{
+  color:white;border:0;
+  background:linear-gradient(110deg,#7952ff,#16bcd4);
+  box-shadow:0 0 25px #7852ff44;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 8px 30px #38dfff30}
+.orb{
+  width:min(300px,75vw);aspect-ratio:1;border-radius:50%;
+  display:grid;place-items:center;font-size:100px;
+  background:radial-gradient(circle at 35% 25%,#b2faff,#8a48ff 45%,#12162b 75%);
+  box-shadow:0 0 80px #884cff44,inset 0 0 40px #fff4;
+  animation:float 5s ease-in-out infinite;
+  position:relative;
+}
+.orb:after{
+  content:"";position:absolute;inset:-17px;border-radius:50%;
+  border:1px solid #5deaff70;
+  animation:spin 12s linear infinite;
+}
+section{padding:75px 8%}
+.section-head{margin-bottom:32px}
+.section-head h2{font-size:clamp(28px,4vw,42px);margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card{
+  background:linear-gradient(145deg,#161d35dd,#0c1020ee);
+  border:1px solid #ffffff13;border-radius:20px;padding:25px;
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+  transform-style:preserve-3d;
+}
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#7e65ff99;
+  box-shadow:0 15px 45px #5b36ff20;
+}
+.icon{font-size:34px;margin-bottom:14px}
+.card h3{margin-bottom:9px}
+.card p{color:var(--muted);font-size:14px}
+.tag{
+  display:inline-block;margin-top:18px;padding:5px 10px;
+  background:#7652ff20;color:#c8b5ff;border-radius:7px;font-size:12px
+}
+.about-box{
+  display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;
+}
+.skills{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.skills span{border:1px solid #ffffff20;border-radius:8px;padding:8px 12px;color:#c5c9df}
+.blog-card{overflow:hidden;padding:0}
+.blog-cover{
+  min-height:155px;display:grid;place-items:center;font-size:56px;
+  background:linear-gradient(135deg,#30216c,#087e94);
+}
+.blog-body{padding:23px}
+.blog-body small{color:var(--cyan)}
+.blog-body h3{margin:9px 0}
+.blog-body p{margin-bottom:17px}
+.readmore{color:var(--cyan);background:none;border:0}
+.contact-form{display:grid;gap:14px;max-width:650px}
+.field{
+  width:100%;padding:14px 16px;color:white;
+  background:#10162a;border:1px solid #ffffff20;border-radius:10px;
+  outline:none;
+}
+.field:focus{border-color:var(--cyan)}
+textarea.field{min-height:120px;resize:vertical}
+footer{
+  padding:30px 8%;border-top:1px solid #ffffff15;
+  text-align:center;color:var(--muted)
+}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+#toast{
+  position:fixed;bottom:25px;right:20px;z-index:30;
+  background:#17213b;border:1px solid #35e5ff66;
+  padding:13px 18px;border-radius:12px;display:none;
+}
+#top{
+  position:fixed;bottom:24px;left:20px;z-index:8;
+  background:#171c34;color:white;border:1px solid #ffffff30;
+  border-radius:50%;width:44px;height:44px;display:none;
+}
+@keyframes rise{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{50%{transform:translateY(-17px) rotate(4deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shine{to{background-position:200% center}}
+@media(max-width:650px){
+  nav{padding:16px 5%}.navlinks{gap:13px;font-size:13px}
+  .hero{padding:65px 6%;min-height:auto}
+  section{padding:55px 6%}.about-box{grid-template-columns:1fr}
+  .orb{margin:15px auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="logo">TALHA<span>.</span></a>
+  <div class="navlinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">WELCOME TO MY DIGITAL WORLD</div>
+    <h1>Hi, I'm Talha.<br><span class="gradient">Creative Developer</span></h1>
+    <p>I build beautiful websites, explore new technology and share my ideas with the world. Welcome to my personal portfolio and blog!</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore My Work ↗</a>
+      <a class="btn" href="#contact">Contact Me</a>
+    </div>
+  </div>
+  <div class="orb" aria-label="Creative digital orb">🚀</div>
+</header>
+
+<section id="about">
+  <div class="section-head reveal">
+    <div class="eyebrow">A LITTLE ABOUT ME</div>
+    <h2>Turning Ideas Into <span class="gradient">Reality</span></h2>
+  </div>
+  <div class="about-box reveal">
+    <div class="card">
+      <div class="icon">👨‍💻</div>
+      <h3>Who Am I?</h3>
+      <p>I'm Talha, a creative learner passionate about website design, coding, technology and digital experiences. I enjoy turning simple ideas into exciting projects.</p>
+    </div>
+    <div class="card">
+      <h3>My Skills</h3>
+      <p>Things I'm learning and working with:</p>
+      <div class="skills">
+        <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+        <span>WordPress</span><span>UI Design</span><span>SEO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head reveal">
+    <div class="eyebrow">WHAT I CREATE</div>
+    <h2>Featured Projects</h2>
+    <p class="muted">A collection of my creative experiments and ideas.</p>
+  </div>
+  <div class="grid">
+    <article class="card reveal">
+      <div class="icon">🌐</div><h3>Portfolio Website</h3>
+      <p>A personal website with modern layouts, smooth animations and responsive design.</p>
+      <span class="tag">Web Design</span>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🎮</div><h3>Gaming Zone</h3>
+      <p>A gaming-inspired digital experience with colourful cards and futuristic visuals.</p>
+      <span class="tag">Creative Project</span>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🤖</div><h3>AI Tools Hub</h3>
+      <p>A directory concept for discovering helpful AI tools for studying, designing and productivity.</p>
+      <span class="tag">Technology</span>
+    </article>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="section-head reveal">
+    <div class="eyebrow">MY LATEST THOUGHTS</div>
+    <h2>From My Blog ✍️</h2>
+  </div>
+  <div class="grid">
+    <article class="card blog-card reveal">
+      <div class="blog-cover">💻</div>
+      <div class="blog-body">
+        <small>WEB DEVELOPMENT</small>
+        <h3>My Journey Into Website Design</h3>
+        <p>Discover how HTML, CSS and JavaScript help transform ideas into websites.</p>
+        <button class="readmore" data-title="My Journey Into Website Design" data-content="HTML creates the structure of a website. CSS adds colour, layout and animations. JavaScript makes elements interactive. Learning one step at a time helps you build better projects.">Read Article ↗</button>
+      </div>
+    </article>
+    <article class="card blog-card reveal">
+      <div class="blog-cover" style="background:linear-gradient(135deg,#663399,#cf4c83)">🤖</div>
+      <div class="blog-body">
+        <small>ARTIFICIAL INTELLIGENCE</small>
+        <h3>How AI Can Help You Learn</h3>
+        <p>Explore ways to use AI for brainstorming, learning and creative projects.</p>
+        <button class="readmore" data-title="How AI Can Help You Learn" data-content="AI tools can help explain difficult topics, suggest project ideas and support creative work. Always check important information and use AI as a learning assistant, not a replacement for your own thinking.">Read Article ↗</button>
+      </div>
+    </article>
+    <article class="card blog-card reveal">
+      <div class="blog-cover" style="background:linear-gradient(135deg,#087e94,#4336a5)">✨</div>
+      <div class="blog-body">
+        <small>CREATIVITY</small>
+        <h3>Designing a Modern Website</h3>
+        <p>Simple ideas for creating clean, attractive and mobile-friendly websites.</p>
+        <button class="readmore" data-title="Designing a Modern Website" data-content="Choose readable fonts, consistent colours, clear navigation and enough spacing. Use animation thoughtfully and make sure the website works on mobile screens as well as computers.">Read Article ↗</button>
+      </div>
+    </article>
+  </div>
+  <article id="article" class="card" hidden style="margin-top:25px">
+    <h3 id="articleTitle"></h3>
+    <p id="articleContent" style="margin:12px 0"></p>
+    <button class="btn" id="closeArticle">Close Article ✕</button>
+  </article>
+</section>
+
+<section id="contact">
+  <div class="section-head reveal">
+    <div class="eyebrow">LET'S CONNECT</div>
+    <h2>Have an Idea? <span class="gradient">Let's Talk.</span></h2>
+    <p class="muted">Send a message using the form below.</p>
+  </div>
+  <form class="contact-form reveal" id="contactForm">
+    <input class="field" id="name" placeholder="Your name" required>
+    <input class="field" id="email" type="email" placeholder="Your email" required>
+    <textarea class="field" id="message" placeholder="Write your message..." required></textarea>
+    <button class="btn primary" type="submit">Prepare Message ↗</button>
+    <p class="muted" style="font-size:12px">Demo form: it prepares an email in your email app; it does not store messages online.</p>
+  </form>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Talha's Portfolio. Made with 💜 and creativity.</p>
+  <p style="margin-top:8px">Keep learning. Keep creating. Keep growing.</p>
+</footer>
+
+<button id="top" aria-label="Back to top">↑</button>
+<div id="toast" role="status"></div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+const topBtn = document.getElementById("top");
+window.addEventListener("scroll",()=>{
+  topBtn.style.display = window.scrollY > 350 ? "block" : "none";
+});
+topBtn.onclick = () => window.scrollTo({top:0,behavior:"smooth"});
+
+document.querySelectorAll(".readmore").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.getElementById("articleTitle").textContent=btn.dataset.title;
+    document.getElementById("articleContent").textContent=btn.dataset.content;
+    const article=document.getElementById("article");
+    article.hidden=false;
+    article.scrollIntoView({behavior:"smooth",block:"center"});
+  });
+});
+document.getElementById("closeArticle").onclick=()=>{
+  document.getElementById("article").hidden=true;
+};
+
+document.getElementById("contactForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=document.getElementById("name").value.trim();
+  const email=document.getElementById("email").value.trim();
+  const message=document.getElementById("message").value.trim();
+  const subject=encodeURIComponent("Portfolio message from "+name);
+  const body=encodeURIComponent(
+    "Name: "+name+"\nEmail: "+email+"\n\n"+message
+  );
+  showToast("Opening your email app...");
+  window.location.href="mailto:?subject="+subject+"&body="+body;
+});
+
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.style.display="block";
+  setTimeout(()=>toast.style.display="none",3000);
+}
+</script>
+</body>
+</html>
